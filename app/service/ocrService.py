@@ -51,6 +51,8 @@ class OcrService:
                 os.path.join(draw_img_save, os.path.basename("./0727.jpg"))))
 
         wrong_boxes = [boxes[i].tolist() for i in range(len(boxes))]
-        result_data = {"wrong_boxes": wrong_boxes, "wrong_txts": txts}
+        wrong_scores = [str(scores[i]) for i in range(len(scores))]
+        result_data = {"wrong_boxes": wrong_boxes, "wrong_txts": txts, "wrong_scores": wrong_scores}
+        print(result_data)
 
         return result_data

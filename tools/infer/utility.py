@@ -28,8 +28,23 @@ def parse_args():
         return v.lower() in ("true", "t", "1")
 
     parser = argparse.ArgumentParser()
-    # 预测型号
-    parser.add_argument("--device_type", type=str)
+    # custom parameters
+    # 预测的型号
+    parser.add_argument("--type", type=str, default='none')
+    # 深度学习主机ID
+    parser.add_argument("--serverID", type=str, default='none')
+    # 本地主机ID编号
+    parser.add_argument("--localID", type=str, default='none')
+    # 相机ID编号
+    parser.add_argument("--cameraID", type=str, default='none')
+    # 处理优先级
+    parser.add_argument("--priority", type=str, default='none')
+    # 图像序列号
+    parser.add_argument("--imageTag", type=str, default='none')
+    # http连接模式
+    parser.add_argument("--pattern", type=str, default='none')
+    # 图像数据
+    parser.add_argument("--imagedata", type=str, default='none')
     # params for prediction engine
     parser.add_argument("--use_gpu", type=str2bool, default=True)
     parser.add_argument("--ir_optim", type=str2bool, default=True)
