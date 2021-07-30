@@ -32,7 +32,10 @@ def wrongData():
     # device_type = str(request.values.get("device_type"))
     # device_type = str(request.json.get("device_type"))
     file_str = str(request.json.get("file"))
-    print(file_str)
+    print("request.headers---->", request.headers)
+    print("values---->", request.values)
+    print("args---->", request.args)
+    print("json---->", request.json)
     imageFile = base64.b64decode(file_str)
     with open("./temp.jpg", "wb") as fp:
         fp.write(imageFile)
@@ -49,8 +52,10 @@ def wrongData():
 
     ### 检测和识别
     result_data = ocrService.get_wrong_data("./temp.jpg", args)
-
-    return Response(get_response_params(args, result_data), mimetype='application/json')
+    response = Response(get_response_params(args, result_data), mimetype='application/json')
+    print("response.headers---->", response.headers)
+    print("response.json---->", response.json)
+    return response
 
 
 # 返回参数处理
